@@ -1,5 +1,5 @@
 /* * * *
- * MY HABITICA VARS
+ * MY HABITICA INPUT
  * * * */
 const taskColumn1 = document.querySelector('#c1'),
   taskColumn2 = document.querySelector('#c2'),
@@ -22,12 +22,20 @@ const cc2 = '.daily{display:none!important;}';
 const cc3 = '.todo{display:none!important;}';
 const cc4 = '.reward{display:none!important;}';
 
+/* * * *
+ * DEFAULT STYLE
+ * * * */
+const defaultStyle = `
+  .tasks-columns{justify-content:center;}
+`;
+
 let style = {
   id: 12,
   'c1': '',
   'c2': '',
   'c3': '',
-  'c4': ''
+  'c4': '',
+  'default': defaultStyle
 };
 
 /* * * *
@@ -72,15 +80,7 @@ const loadStyle = function () {
 
 window.onload = function () {
   loadStyle();
-  console.log(style);
 }
-
-/* * * *
- * DEFAULT STYLES
- * * * */
-style.default = `
-  .tasks-columns{justify-content:center;}
-`;
 
 /* * * *
  * TASK COLUMNS
