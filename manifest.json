@@ -15,7 +15,7 @@
   ],
   "content_scripts": [{
     "css": ["style.css"],
-    "js": ["script.js"],
+    "js": ["script.js", "inject.js"],
     "matches": ["https://habitica.com/*"]
   }]
 }
