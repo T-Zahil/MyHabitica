@@ -35,11 +35,26 @@ const saveStyle = function () {
 const loadStyle = function () {
 
   chrome.storage.sync.get('style', function (item) {
-    style = item['style'];
+    var save = JSON.parse(item['style']);
+    if (save.c1.length > 1) {
+      taskColumn1.checked = false;
+    }
+    if (save.c2.length > 1) {
+      taskColumn2.checked = false;
+    }
+    if (save.c3.length > 1) {
+      taskColumn3.checked = false;
+    }
+    if (save.c4.length > 1) {
+      taskColumn4.checked = false;
+    }
   });
 
-  saveStyle();
+}
 
+window.onload = function () {
+  loadStyle();
+  console.log(style);
 }
 
 /* * * *
@@ -48,8 +63,6 @@ const loadStyle = function () {
 style.default = `
   .tasks-columns{justify-content:center;}
 `;
-
-saveStyle();
 
 /* * * *
  * TASK COLUMNS
