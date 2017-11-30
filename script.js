@@ -4,23 +4,29 @@
 const taskColumn1 = document.querySelector('#c1'),
   taskColumn2 = document.querySelector('#c2'),
   taskColumn3 = document.querySelector('#c3'),
-  taskColumn4 = document.querySelector('#c4');
+  taskColumn4 = document.querySelector('#c4'),
+
+  misc1 = document.querySelector('#m1');
 
 /* * * *
  * DEFAULT STYLES
  * * * */
-const dc1 = '.habit{display:block!important;}';
-const dc2 = '.daily{display:block!important;}';
-const dc3 = '.todo{display:block!important;}';
-const dc4 = '.reward{display:block!important;}';
+const dc1 = '.habit{display:block!important;}',
+  dc2 = '.daily{display:block!important;}',
+  dc3 = '.todo{display:block!important;}',
+  dc4 = '.reward{display:block!important;}',
+
+  dm1 = '#app-header{display:flex!important;}';
 
 /* * * *
  * CUSTOM STYLES
  * * * */
-const cc1 = '.habit{display:none!important;}';
-const cc2 = '.daily{display:none!important;}';
-const cc3 = '.todo{display:none!important;}';
-const cc4 = '.reward{display:none!important;}';
+const cc1 = '.habit{display:none!important;}',
+  cc2 = '.daily{display:none!important;}',
+  cc3 = '.todo{display:none!important;}',
+  cc4 = '.reward{display:none!important;}',
+
+  cm1 = '#app-header{display:none!important;}';
 
 /* * * *
  * DEFAULT STYLE
@@ -35,6 +41,7 @@ let style = {
   'c2': '',
   'c3': '',
   'c4': '',
+  'm1': '',
   'default': defaultStyle
 };
 
@@ -74,6 +81,9 @@ const loadStyle = function () {
     if (save.c4 === cc4) {
       taskColumn4.checked = false;
     }
+    if (save.m1 === cm1) {
+      misc1.checked = false;
+    }
   });
 
 }
@@ -83,7 +93,7 @@ window.onload = function () {
 }
 
 /* * * *
- * TASK COLUMNS
+ * TASK COLUMNS EVENT HANDLERS
  * * * */
 taskColumn1.addEventListener('click', function () {
   if (!this.checked) {
@@ -117,6 +127,18 @@ taskColumn4.addEventListener('click', function () {
     style.c4 = cc4;
   } else {
     style.c4 = dc4;
+  }
+  saveStyle();
+});
+
+/* * * *
+ * MISC EVENT HANDLERS
+ * * * */
+misc1.addEventListener('click', function () {
+  if (!this.checked) {
+    style.m1 = cm1;
+  } else {
+    style.m1 = dm1;
   }
   saveStyle();
 });
