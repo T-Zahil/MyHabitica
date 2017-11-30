@@ -1,11 +1,10 @@
-console.log('Load content script');
 /* * * *
  * MY HABITICA VARS
  * * * */
-const taskColumn1 = document.querySelector('#c1');
-const taskColumn2 = document.querySelector('#c2');
-const taskColumn3 = document.querySelector('#c3');
-const taskColumn4 = document.querySelector('#c4');
+const taskColumn1 = document.querySelector('#c1'),
+  taskColumn2 = document.querySelector('#c2'),
+  taskColumn3 = document.querySelector('#c3'),
+  taskColumn4 = document.querySelector('#c4');
 
 let style = {
   id: 12,
@@ -15,32 +14,32 @@ let style = {
   'c4': ''
 };
 
-// chrome.storage.sync.clear(function () {});
-
 /* * * *
  * SAVE CUSTOM STYLE
  * * * */
 const saveStyle = function () {
+
   chrome.storage.sync.set({
     'style': JSON.stringify(style)
-  }, function () {
-    console.log('Settings saved' + style);
-  });
+  }, function () {});
+
   chrome.tabs.executeScript(null, {
     file: "inject.js"
   });
+
 }
 
 /* * * *
  * LOAD CUSTOM STYLE
  * * * */
 const loadStyle = function () {
+
   chrome.storage.sync.get('style', function (item) {
     style = item['style'];
   });
-  console.log('LOAD !');
-  console.log(style);
+
   saveStyle();
+
 }
 
 /* * * *
