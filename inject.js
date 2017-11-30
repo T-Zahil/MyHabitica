@@ -3,7 +3,7 @@ var style = document.createElement('style');
 function loadStyle() {
   chrome.storage.sync.get('style', function (item) {
     var save = JSON.parse(item['style']);
-    style.innerText = save.default+save.c1 + save.c2 + save.c3 + save.c4 + save.m1;
+    style.innerText = save.default+save.t1 + save.t2 + save.t3 + save.t4 + save.t5 + save.m1;
   });
 }
 
