@@ -1,3 +1,4 @@
+console.log('Load content script');
 /* * * *
  * MY HABITICA VARS
  * * * */
@@ -6,7 +7,41 @@ const taskColumn2 = document.querySelector('#c2');
 const taskColumn3 = document.querySelector('#c3');
 const taskColumn4 = document.querySelector('#c4');
 
-let style = {};
+let style = {
+  id: 12,
+  'c1': '',
+  'c2': '',
+  'c3': '',
+  'c4': ''
+};
+
+// chrome.storage.sync.clear(function () {});
+
+/* * * *
+ * SAVE CUSTOM STYLE
+ * * * */
+const saveStyle = function () {
+  chrome.storage.sync.set({
+    'style': JSON.stringify(style)
+  }, function () {
+    console.log('Settings saved' + style);
+  });
+  chrome.tabs.executeScript(null, {
+    file: "inject.js"
+  });
+}
+
+/* * * *
+ * LOAD CUSTOM STYLE
+ * * * */
+const loadStyle = function () {
+  chrome.storage.sync.get('style', function (item) {
+    style = item['style'];
+  });
+  console.log('LOAD !');
+  console.log(style);
+  saveStyle();
+}
 
 /* * * *
  * DEFAULT STYLES
@@ -15,65 +50,43 @@ style.default = `
   .tasks-columns{justify-content:center;}
 `;
 
-chrome.tabs.insertCSS(null, {
-  code: style.default
-});
+saveStyle();
 
 /* * * *
  * TASK COLUMNS
  * * * */
 taskColumn1.addEventListener('click', function () {
-  style.c1 = '.habit{display:none!important;}';
   if (!this.checked) {
-    chrome.tabs.insertCSS(null, {
-      code: style.c1
-    });
+    style.c1 = '.habit{display:none!important;}';
   } else {
     style.c1 = '.habit{display:block!important;}';
-    chrome.tabs.insertCSS(null, {
-      code: style.c1
-    });
   }
+  saveStyle();
 });
 
 taskColumn2.addEventListener('click', function () {
-  style.c2 = '.daily{display:none!important;}';
   if (!this.checked) {
-    chrome.tabs.insertCSS(null, {
-      code: style.c2
-    });
+    style.c2 = '.daily{display:none!important;}';
   } else {
     style.c2 = '.daily{display:block!important;}';
-    chrome.tabs.insertCSS(null, {
-      code: style.c2
-    });
   }
+  saveStyle();
 });
 
 taskColumn3.addEventListener('click', function () {
-  style.c3 = '.todo{display:none!important;}';
   if (!this.checked) {
-    chrome.tabs.insertCSS(null, {
-      code: style.c3
-    });
+    style.c3 = '.todo{display:none!important;}';
   } else {
     style.c3 = '.todo{display:block!important;}';
-    chrome.tabs.insertCSS(null, {
-      code: style.c3
-    });
   }
+  saveStyle();
 });
 
 taskColumn4.addEventListener('click', function () {
-  style.c4 = '.reward{display:none!important;}';
   if (!this.checked) {
-    chrome.tabs.insertCSS(null, {
-      code: style.c4
-    });
+    style.c4 = '.reward{display:none!important;}';
   } else {
     style.c4 = '.reward{display:block!important;}';
-    chrome.tabs.insertCSS(null, {
-      code: style.c4
-    });
   }
+  saveStyle();
 });
