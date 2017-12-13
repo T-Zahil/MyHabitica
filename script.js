@@ -52,7 +52,11 @@ let style = {
   t2: '',
   t3: '',
   t4: '',
+  t5: '',
+  t6: '',
   m1: '',
+  m2: '',
+  m3: '',
   default: defaultStyle
 }
 
@@ -66,8 +70,6 @@ const saveStyle = function() {
     },
     function() {}
   )
-
-  console.log(style)
 
   chrome.tabs.executeScript(null, {
     file: 'inject.js'
@@ -103,6 +105,9 @@ const loadStyle = function() {
     }
     if (save.m2 === cm2) {
       mist2.checked = false
+    }
+    if (save.m3 === cm3) {
+      mist3.checked = false
     }
   })
 }
