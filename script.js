@@ -8,7 +8,8 @@ const tasksColumn1 = document.querySelector('#t1'),
   tasksFilter = document.querySelector('#t5'),
   tasksLess = document.querySelector('#t6'),
   mist1 = document.querySelector('#m1'),
-  mist2 = document.querySelector('#m2')
+  mist2 = document.querySelector('#m2'),
+  mist3 = document.querySelector('#m3')
 
 /** * *
  * DEFAULT STYLES
@@ -21,7 +22,8 @@ const dt1 = '.habit{display:block!important;}',
   dt6 = '.task-habit-disabled{display:flex!important;}',
   dm1 = '#app-header{display:flex!important;}',
   dm2 =
-    '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}'
+    '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}',
+  dm3 = '.party-members{display:flex!important;}'
 
 /** * *
  * CUSTOM STYLES
@@ -34,7 +36,8 @@ const ct1 = '.habit{display:none!important;}',
   ct6 = '.task-habit-disabled{display:none!important;}',
   cm1 = '#app-header{display:none!important;}',
   cm2 =
-    '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}'
+    '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}',
+  cm3 = '.party-members{display:none!important;}'
 
 /** * *
  * DEFAULT STYLE
@@ -182,6 +185,15 @@ mist2.addEventListener('click', function() {
     style.m2 = cm2
   } else {
     style.m2 = dm2
+  }
+  saveStyle()
+})
+
+mist3.addEventListener('click', function() {
+  if (!this.checked) {
+    style.m3 = cm3
+  } else {
+    style.m3 = dm3
   }
   saveStyle()
 })
