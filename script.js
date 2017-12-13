@@ -7,7 +7,8 @@ const tasksColumn1 = document.querySelector('#t1'),
   tasksColumn4 = document.querySelector('#t4'),
   tasksFilter = document.querySelector('#t5'),
   tasksLess = document.querySelector('#t6'),
-  mist1 = document.querySelector('#m1')
+  mist1 = document.querySelector('#m1'),
+  mist2 = document.querySelector('#m2')
 
 /** * *
  * DEFAULT STYLES
@@ -18,7 +19,9 @@ const dt1 = '.habit{display:block!important;}',
   dt4 = '.reward{display:block!important;}',
   dt5 = '.filter{display:block!important;}',
   dt6 = '.task-habit-disabled{display:block!important;}',
-  dm1 = '#app-header{display:flex!important;}'
+  dm1 = '#app-header{display:flex!important;}',
+  dm2 =
+    '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}'
 
 /** * *
  * CUSTOM STYLES
@@ -29,7 +32,9 @@ const ct1 = '.habit{display:none!important;}',
   ct4 = '.reward{display:none!important;}',
   ct5 = '.filter{display:none!important;}',
   ct6 = '.task-habit-disabled{display:none!important;}',
-  cm1 = '#app-header{display:none!important;}'
+  cm1 = '#app-header{display:none!important;}',
+  cm2 =
+    '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}'
 
 /** * *
  * DEFAULT STYLE
@@ -92,6 +97,9 @@ const loadStyle = function() {
     }
     if (save.m1 === cm1) {
       mist1.checked = false
+    }
+    if (save.m2 === cm2) {
+      mist2.checked = false
     }
   })
 }
@@ -165,6 +173,15 @@ mist1.addEventListener('click', function() {
     style.m1 = cm1
   } else {
     style.m1 = dm1
+  }
+  saveStyle()
+})
+
+mist2.addEventListener('click', function() {
+  if (!this.checked) {
+    style.m2 = cm2
+  } else {
+    style.m2 = dm2
   }
   saveStyle()
 })
