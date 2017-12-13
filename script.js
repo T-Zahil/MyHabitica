@@ -18,7 +18,7 @@ const dt1 = '.habit{display:block!important;}',
   dt3 = '.todo{display:block!important;}',
   dt4 = '.reward{display:block!important;}',
   dt5 = '.filter{display:block!important;}',
-  dt6 = '.task-habit-disabled{display:block!important;}',
+  dt6 = '.task-habit-disabled{display:flex!important;}',
   dm1 = '#app-header{display:flex!important;}',
   dm2 =
     '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}'
