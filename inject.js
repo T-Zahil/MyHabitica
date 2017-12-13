@@ -1,12 +1,20 @@
-var style = document.createElement('style');
+var style = document.createElement('style')
 
 function loadStyle() {
-  chrome.storage.sync.get('style', function (item) {
-    var save = JSON.parse(item['style']);
-    style.innerText = save.default+save.t1 + save.t2 + save.t3 + save.t4 + save.t5 + save.m1;
-  });
+  chrome.storage.sync.get('style', function(item) {
+    var save = JSON.parse(item['style'])
+    style.innerText =
+      save.default +
+      save.t1 +
+      save.t2 +
+      save.t3 +
+      save.t4 +
+      save.t5 +
+      save.t6 +
+      save.m1
+  })
 }
 
-loadStyle();
+loadStyle()
 
 document.head.appendChild(style)

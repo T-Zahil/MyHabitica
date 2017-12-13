@@ -1,4 +1,4 @@
-/* * * *
+/** * *
  * MY HABITICA INPUT
  * * * */
 const tasksColumn1 = document.querySelector('#t1'),
@@ -6,10 +6,10 @@ const tasksColumn1 = document.querySelector('#t1'),
   tasksColumn3 = document.querySelector('#t3'),
   tasksColumn4 = document.querySelector('#t4'),
   tasksFilter = document.querySelector('#t5'),
+  tasksLess = document.querySelector('#t6'),
+  mist1 = document.querySelector('#m1')
 
-  mist1 = document.querySelector('#m1');
-
-/* * * *
+/** * *
  * DEFAULT STYLES
  * * * */
 const dt1 = '.habit{display:block!important;}',
@@ -17,10 +17,10 @@ const dt1 = '.habit{display:block!important;}',
   dt3 = '.todo{display:block!important;}',
   dt4 = '.reward{display:block!important;}',
   dt5 = '.filter{display:block!important;}',
+  dt6 = '.task-habit-disabled{display:block!important;}',
+  dm1 = '#app-header{display:flex!important;}'
 
-  dm1 = '#app-header{display:flex!important;}';
-
-/* * * *
+/** * *
  * CUSTOM STYLES
  * * * */
 const ct1 = '.habit{display:none!important;}',
@@ -28,132 +28,143 @@ const ct1 = '.habit{display:none!important;}',
   ct3 = '.todo{display:none!important;}',
   ct4 = '.reward{display:none!important;}',
   ct5 = '.filter{display:none!important;}',
+  ct6 = '.task-habit-disabled{display:none!important;}',
+  cm1 = '#app-header{display:none!important;}'
 
-  cm1 = '#app-header{display:none!important;}';
-
-/* * * *
+/** * *
  * DEFAULT STYLE
  * * * */
 const defaultStyle = `
   .tasks-columns{justify-content:center;}
-`;
+`
 
 let style = {
   id: 12,
-  't1': '',
-  't2': '',
-  't3': '',
-  't4': '',
-  'm1': '',
-  'default': defaultStyle
-};
+  t1: '',
+  t2: '',
+  t3: '',
+  t4: '',
+  m1: '',
+  default: defaultStyle
+}
 
-/* * * *
+/** * *
  * SAVE CUSTOM STYLE
  * * * */
-const saveStyle = function () {
+const saveStyle = function() {
+  chrome.storage.sync.set(
+    {
+      style: JSON.stringify(style)
+    },
+    function() {}
+  )
 
-  chrome.storage.sync.set({
-    'style': JSON.stringify(style)
-  }, function () {});
-
-  console.log(style);
+  console.log(style)
 
   chrome.tabs.executeScript(null, {
-    file: "inject.js"
-  });
-
+    file: 'inject.js'
+  })
 }
 
-/* * * *
+/** * *
  * LOAD CUSTOM STYLE
  * * * */
-const loadStyle = function () {
-
-  chrome.storage.sync.get('style', function (item) {
-    var save = JSON.parse(item['style']);
+const loadStyle = function() {
+  chrome.storage.sync.get('style', function(item) {
+    var save = JSON.parse(item['style'])
     if (save.t1 === ct1) {
-      tasksColumn1.checked = false;
+      tasksColumn1.checked = false
     }
     if (save.t2 === ct2) {
-      tasksColumn2.checked = false;
+      tasksColumn2.checked = false
     }
     if (save.t3 === ct3) {
-      tasksColumn3.checked = false;
+      tasksColumn3.checked = false
     }
     if (save.t4 === ct4) {
-      tasksColumn4.checked = false;
+      tasksColumn4.checked = false
     }
     if (save.t5 === ct5) {
-      tasksFilter.checked = false;
+      tasksFilter.checked = false
+    }
+    if (save.t6 === ct6) {
+      tasksLess.checked = false
     }
     if (save.m1 === cm1) {
-      mist1.checked = false;
+      mist1.checked = false
     }
-  });
-
+  })
 }
 
-window.onload = function () {
-  loadStyle();
+window.onload = function() {
+  loadStyle()
 }
 
-/* * * *
+/** * *
  * TASKS EVENT HANDLERS
  * * * */
-tasksColumn1.addEventListener('click', function () {
+tasksColumn1.addEventListener('click', function() {
   if (!this.checked) {
-    style.t1 = ct1;
+    style.t1 = ct1
   } else {
-    style.t1 = dt1;
+    style.t1 = dt1
   }
-  saveStyle();
-});
+  saveStyle()
+})
 
-tasksColumn2.addEventListener('click', function () {
+tasksColumn2.addEventListener('click', function() {
   if (!this.checked) {
-    style.t2 = ct2;
+    style.t2 = ct2
   } else {
-    style.t2 = dt2;
+    style.t2 = dt2
   }
-  saveStyle();
-});
+  saveStyle()
+})
 
-tasksColumn3.addEventListener('click', function () {
+tasksColumn3.addEventListener('click', function() {
   if (!this.checked) {
-    style.t3 = ct3;
+    style.t3 = ct3
   } else {
-    style.t3 = dt3;
+    style.t3 = dt3
   }
-  saveStyle();
-});
+  saveStyle()
+})
 
-tasksColumn4.addEventListener('click', function () {
+tasksColumn4.addEventListener('click', function() {
   if (!this.checked) {
-    style.t4 = ct4;
+    style.t4 = ct4
   } else {
-    style.t4 = dt4;
+    style.t4 = dt4
   }
-  saveStyle();
-});
+  saveStyle()
+})
 
-tasksFilter.addEventListener('click', function () {
+tasksFilter.addEventListener('click', function() {
   if (!this.checked) {
-    style.t5 = ct5;
+    style.t5 = ct5
   } else {
-    style.t5 = dt5;
+    style.t5 = dt5
   }
-  saveStyle();
-});
+  saveStyle()
+})
 
-/* * * *
+tasksLess.addEventListener('click', function() {
+  if (!this.checked) {
+    style.t6 = ct6
+  } else {
+    style.t6 = dt6
+  }
+  saveStyle()
+})
+
+/** * *
  * MISC EVENT HANDLERS
  * * * */
-mist1.addEventListener('click', function () {
+mist1.addEventListener('click', function() {
   if (!this.checked) {
-    style.m1 = cm1;
+    style.m1 = cm1
   } else {
-    style.m1 = dm1;
+    style.m1 = dm1
   }
-  saveStyle();
-});
+  saveStyle()
+})
