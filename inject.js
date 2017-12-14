@@ -12,6 +12,7 @@ function loadStyle() {
       save.t5 +
       save.t6 +
       save.t7 +
+      save.t8 +
       save.m1 +
       save.m2 +
       save.m3
@@ -19,5 +20,5 @@ function loadStyle() {
 }
 
 loadStyle()
-
+console.log(style)
 document.head.appendChild(style)
