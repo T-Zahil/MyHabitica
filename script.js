@@ -51,6 +51,7 @@ const ct1 = '.habit{display:none!important;}',
 const defaultStyle = `
   .tasks-columns{justify-content:center;}
   .notifications{top:60px!important;}
+  .reward-items[data-v-41b753a2]{justify-content:center;padding-top:15px;}
 `
 
 let style = {
