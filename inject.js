@@ -11,6 +11,7 @@ function loadStyle() {
       save.t4 +
       save.t5 +
       save.t6 +
+      save.t7 +
       save.m1 +
       save.m2 +
       save.m3
