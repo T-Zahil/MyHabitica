@@ -44,6 +44,7 @@ const ct1 = '.habit{display:none!important;}',
  * * * */
 const defaultStyle = `
   .tasks-columns{justify-content:center;}
+  .notifications{top:60px!important;}
 `
 
 let style = {
