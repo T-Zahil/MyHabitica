@@ -1,18 +1,21 @@
 /** * *
- * HIDE TASKS
+ * TASKS WORKFLOW
  * * * */
 console.log('features')
 
 setTimeout(function() {
   var tasks = document.getElementsByClassName('task')
   var hideText = '/hide'
-
-  console.log(tasks)
-  console.log(tasks.length)
+  var catText = '--'
 
   for (var i = 0; i < tasks.length; i++) {
+    // HIDE TASK
     if (tasks[i].innerText.toLowerCase().indexOf(hideText) > -1) {
       tasks[i].className += ' hide'
+    }
+    // TASK CAT
+    if (tasks[i].innerText.indexOf(catText) > -1) {
+      tasks[i].className += ' taskCat'
     }
   }
 }, 2000)

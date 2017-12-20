@@ -9,7 +9,6 @@ const tasksColumn1 = document.querySelector('#t1'),
   tasksLess = document.querySelector('#t6'),
   tasksBackgroundTxt = document.querySelector('#t7'),
   tasksSearch = document.querySelector('#t8'),
-  tasksHide = document.querySelector('#t9'),
   mist1 = document.querySelector('#m1'),
   mist2 = document.querySelector('#m2'),
   mist3 = document.querySelector('#m3')
@@ -25,7 +24,6 @@ const dt1 = '.habit{display:block!important;}',
   dt6 = '.task-habit-disabled{display:flex!important;}',
   dt7 = '.column-background{display:block!important;}',
   dt8 = '.tasks-navigation{display:flex!important;}',
-  dt9 = '.hide{display:block!important;}',
   dm1 = '#app-header{display:flex!important;}',
   dm2 =
     '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}',
@@ -42,7 +40,6 @@ const ct1 = '.habit{display:none!important;}',
   ct6 = '.task-habit-disabled{display:none!important;}',
   ct7 = '.column-background{display:none!important;}',
   ct8 = '.tasks-navigation{display:none!important;}',
-  ct9 = '.hide{display:none!important;}',
   cm1 = '#app-header{display:none!important;}',
   cm2 =
     '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}',
@@ -55,6 +52,10 @@ const defaultStyle = `
   .tasks-columns{justify-content:center;}
   .notifications{top:60px!important;}
   .reward-items[data-v-41b753a2]{justify-content:center!important;padding-top:15px!important;}
+  .taskCat .left-control{display:none!important;}
+  .taskCat .right-control{display:none!important;}
+  .taskCat .task-content{padding-bottom:0;background-color:#A997E8;}
+  .taskCat .task-title{font-weight:bold;color:white;font-size:1.2rem;}
 `
 
 let style = {
@@ -67,7 +68,6 @@ let style = {
   t6: '',
   t7: '',
   t8: '',
-  t9: '',
   m1: '',
   m2: '',
   m3: '',
@@ -119,9 +119,6 @@ const loadStyle = function() {
     }
     if (save.t8 === ct8) {
       tasksSearch.checked = false
-    }
-    if (save.t9 === ct9) {
-      tasksHide.checked = false
     }
     if (save.m1 === cm1) {
       mist1.checked = false
@@ -211,15 +208,6 @@ tasksSearch.addEventListener('click', function() {
     style.t8 = ct8
   } else {
     style.t8 = dt8
-  }
-  saveStyle()
-})
-
-tasksHide.addEventListener('click', function() {
-  if (!this.checked) {
-    style.t9 = ct9
-  } else {
-    style.t9 = dt9
   }
   saveStyle()
 })
