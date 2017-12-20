@@ -12,7 +12,7 @@
 * Hide tasks that contains "/hide" in there name or in there description
 * Separate your tasks with those containing "--" characters
 
-![Example](https://img15.hostingpics.net/pics/934404Capturedecran20171220a201156.png)
+![Example](https://img15.hostingpics.net/pics/977812Capturedecran20171220a201156.png)
 
 ## Installation
 
