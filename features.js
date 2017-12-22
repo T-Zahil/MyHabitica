@@ -4,6 +4,10 @@
 console.log('features')
 
 setTimeout(function() {
+  taskBrowsing()
+}, 2000)
+
+const taskBrowsing = function () {
   var tasks = document.getElementsByClassName('task')
   var hideText = '/hide'
   var catText = '--'
@@ -18,4 +22,4 @@ setTimeout(function() {
       tasks[i].className += ' taskCat'
     }
   }
-}, 2000)
+}
