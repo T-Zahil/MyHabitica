@@ -1,16 +1,11 @@
 /** * *
  * TASKS WORKFLOW
  * * * */
-console.log('features')
 
-setTimeout(function() {
-  taskBrowsing()
-}, 2000)
-
-const taskBrowsing = function () {
-  var tasks = document.getElementsByClassName('task')
-  var hideText = '/hide'
-  var catText = '--'
+const taskBrowsing = function() {
+  const tasks = document.getElementsByClassName('task')
+  const hideText = '/hide'
+  const catText = '--'
 
   for (var i = 0; i < tasks.length; i++) {
     // HIDE TASK
@@ -23,3 +18,18 @@ const taskBrowsing = function () {
     }
   }
 }
+
+setTimeout(function() {
+  const homeButton = document.querySelector('[data-v-48d93060]')
+
+  // Launch Browsing after a short timeout
+  taskBrowsing()
+
+  // Add click listener to the home button
+  homeButton.addEventListener('click', function() {
+    // Launch Browsing again after a short timeout
+    setTimeout(function() {
+      taskBrowsing()
+    }, 2000)
+  })
+}, 2000)
