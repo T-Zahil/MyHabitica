@@ -16,6 +16,24 @@ const taskBrowsing = function() {
     if (tasks[i].innerText.indexOf(catText) > -1) {
       tasks[i].className += ' taskCat'
     }
+    // TASK TAGS
+    var tags = tasks[i].getElementsByClassName('tags-container')
+    var tagsArea = tasks[i].getElementsByClassName('icons-right')
+
+    if (tags[0]) {
+      if (tags[0].childElementCount > 1) {
+        console.log(tags[0].childElementCount)
+        for (var j = 0; j < tags[0].childElementCount; j++) {
+          if (j > 0 && j < 5) {
+            var newTags = document.createElement('div')
+            newTags.className = 'category-label myhabitica-label'
+            newTags.innerHTML += tags[0].children[j].innerHTML
+            console.log(newTags)
+            tagsArea[0].insertBefore(newTags, tagsArea[0].firstChild)
+          }
+        }
+      }
+    }
   }
 }
 

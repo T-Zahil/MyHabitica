@@ -11,8 +11,9 @@ const tasksColumn1 = document.querySelector('#t1'),
   tasksSearch = document.querySelector('#t8'),
   mist1 = document.querySelector('#m1'),
   mist2 = document.querySelector('#m2'),
-  mist3 = document.querySelector('#m3')
-mist4 = document.querySelector('#m4')
+  mist3 = document.querySelector('#m3'),
+  mist4 = document.querySelector('#m4'),
+  mh1 = document.querySelector('#mh1')
 
 /** * *
  * HABITICA DEFAULT STYLES
@@ -28,8 +29,9 @@ const dt1 = '.habit{display:block!important;}',
   dm1 = '#app-header{display:flex!important;}',
   dm2 =
     '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}',
-  dm3 = '.party-members{display:flex!important;}'
-dm4 = '.item-notifications{display:block!important;}'
+  dm3 = '.party-members{display:flex!important;}',
+  dm4 = '.item-notifications{display:block!important;}',
+  dmh1 = '.myhabitica-label{display:inline-block!important;}'
 
 /** * *
  * CUSTOM STYLES
@@ -45,8 +47,9 @@ const ct1 = '.habit{display:none!important;}',
   cm1 = '#app-header{display:none!important;}',
   cm2 =
     '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}',
-  cm3 = '.party-members{display:none!important;}'
-cm4 = '.item-notifications{display:none!important;}'
+  cm3 = '.party-members{display:none!important;}',
+  cm4 = '.item-notifications{display:none!important;}',
+  cmh1 = '.myhabitica-label{display:none!important;}'
 
 /** * *
  * MY HABITICA DEFAULT STYLE
@@ -59,6 +62,7 @@ const defaultStyle = `
   .taskCat .right-control{display:none!important;}
   .taskCat .task-content{padding-bottom:0;background-color:#A997E8;}
   .taskCat .task-title{font-weight:bold;color:white;font-size:1.2rem;}
+  .myhabitica-label{min-width: 30px;font-size: 11px;line-height: 1;font-weight: bold;box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
 `
 
 let style = {
@@ -75,6 +79,7 @@ let style = {
   m2: '',
   m3: '',
   m4: '',
+  mh1: '',
   default: defaultStyle
 }
 
@@ -135,6 +140,9 @@ const loadStyle = function() {
     }
     if (save.m4 === cm4) {
       mist4.checked = false
+    }
+    if (save.mh1 === cmh1) {
+      mh1.checked = false
     }
   })
 }
@@ -254,6 +262,15 @@ mist4.addEventListener('click', function() {
     style.m4 = cm4
   } else {
     style.m4 = dm4
+  }
+  saveStyle()
+})
+
+mh1.addEventListener('click', function() {
+  if (!this.checked) {
+    style.mh1 = cmh1
+  } else {
+    style.mh1 = dmh1
   }
   saveStyle()
 })
