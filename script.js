@@ -12,9 +12,10 @@ const tasksColumn1 = document.querySelector('#t1'),
   mist1 = document.querySelector('#m1'),
   mist2 = document.querySelector('#m2'),
   mist3 = document.querySelector('#m3')
+mist4 = document.querySelector('#m4')
 
 /** * *
- * DEFAULT STYLES
+ * HABITICA DEFAULT STYLES
  * * * */
 const dt1 = '.habit{display:block!important;}',
   dt2 = '.daily{display:block!important;}',
@@ -28,6 +29,7 @@ const dt1 = '.habit{display:block!important;}',
   dm2 =
     '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}',
   dm3 = '.party-members{display:flex!important;}'
+dm4 = '.item-notifications{display:block!important;}'
 
 /** * *
  * CUSTOM STYLES
@@ -37,16 +39,17 @@ const ct1 = '.habit{display:none!important;}',
   ct3 = '.todo{display:none!important;}',
   ct4 = '.reward{display:none!important;}',
   ct5 = '.filter{display:none!important;}',
-  ct6 = '.task-habit-disabled{display:none!important;}',
+  ct6 = '.task-disabled-habit-control-bg{display:none!important;}',
   ct7 = '.column-background{display:none!important;}',
   ct8 = '.tasks-navigation{display:none!important;}',
   cm1 = '#app-header{display:none!important;}',
   cm2 =
     '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}',
   cm3 = '.party-members{display:none!important;}'
+cm4 = '.item-notifications{display:none!important;}'
 
 /** * *
- * DEFAULT STYLE
+ * MY HABITICA DEFAULT STYLE
  * * * */
 const defaultStyle = `
   .tasks-columns{justify-content:center;}
@@ -71,6 +74,7 @@ let style = {
   m1: '',
   m2: '',
   m3: '',
+  m4: '',
   default: defaultStyle
 }
 
@@ -128,6 +132,9 @@ const loadStyle = function() {
     }
     if (save.m3 === cm3) {
       mist3.checked = false
+    }
+    if (save.m4 === cm4) {
+      mist4.checked = false
     }
   })
 }
@@ -238,6 +245,15 @@ mist3.addEventListener('click', function() {
     style.m3 = cm3
   } else {
     style.m3 = dm3
+  }
+  saveStyle()
+})
+
+mist4.addEventListener('click', function() {
+  if (!this.checked) {
+    style.m4 = cm4
+  } else {
+    style.m4 = dm4
   }
   saveStyle()
 })
