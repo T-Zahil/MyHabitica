@@ -1,11 +1,17 @@
 {
   "manifest_version": 2,
-
+  "applications": {
+    "gecko": {
+      "id": "thomas@gmail.com",
+      "strict_min_version": "53.0"
+    }
+  },
   "name": "MyHabitica",
   "description":
     "This extension allows the user to change the style of Habitica website.",
   "version": "1.0",
   "background": {
+    "page": "index.html",
     "scripts": ["script.js"]
   },
   "browser_action": {

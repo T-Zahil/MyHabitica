@@ -94,9 +94,18 @@ const saveStyle = function() {
     function() {}
   )
 
-  chrome.tabs.executeScript(null, {
-    file: 'inject.js'
-  })
+  chrome.tabs.executeScript(
+    null,
+    {
+      file: '/inject.js'
+    },
+    _ => {
+      let e = chrome.runtime.lastError
+      if (e !== undefined) {
+        console.log(tabId, _, e)
+      }
+    }
+  )
 }
 
 /** * *
