@@ -28,7 +28,7 @@ const dt1 = '.habit{display:block!important;}',
   dt8 = '.tasks-navigation{display:flex!important;}',
   dm1 = '#app-header{display:flex!important;}',
   dm2 =
-    '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}',
+  '.member-stats div:nth-child(4){display:block!important;}.drawer-container{display:block!important;}',
   dm3 = '.party-members{display:flex!important;}',
   dm4 = '.item-notifications{display:block!important;}',
   dmh1 = '.myhabitica-label{display:inline-block!important;}'
@@ -46,7 +46,7 @@ const ct1 = '.habit{display:none!important;}',
   ct8 = '.tasks-navigation{display:none!important;}',
   cm1 = '#app-header{display:none!important;}',
   cm2 =
-    '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}',
+  '.member-stats div:nth-child(4){display:none!important;}.drawer-container{display:none!important;}',
   cm3 = '.party-members{display:none!important;}',
   cm4 = '.item-notifications{display:none!important;}',
   cmh1 = '.myhabitica-label{display:none!important;}'
@@ -87,8 +87,9 @@ let style = {
  * SAVE CUSTOM STYLE
  * * * */
 const saveStyle = function() {
-  chrome.storage.sync.set(
-    {
+  console.log('Save style : ' + style)
+  console.log(style)
+  chrome.storage.sync.set({
       style: JSON.stringify(style)
     },
     function() {}
@@ -105,6 +106,9 @@ const saveStyle = function() {
 const loadStyle = function() {
   chrome.storage.sync.get('style', function(item) {
     var save = JSON.parse(item['style'])
+    console.log('Load style for checkbox : ' + save)
+    console.log(save)
+    style = save
     if (save.t1 === ct1) {
       tasksColumn1.checked = false
     }
@@ -144,12 +148,12 @@ const loadStyle = function() {
     if (save.mh1 === cmh1) {
       mh1.checked = false
     }
+    saveStyle()
   })
 }
 
 window.onload = function() {
   loadStyle()
-  saveStyle()
 }
 
 /** * *
