@@ -57,9 +57,12 @@ const ct1 = '.habit{display:none!important;}',
 const defaultStyle = `
   .tasks-columns{justify-content:center;}
   .notifications{top:60px!important;}
-  .reward-items[data-v-41b753a2]{justify-content:center!important;padding-top:15px!important;}
   .myhabitica-label{min-width: 30px;font-size: 11px;line-height: 1;font-weight: bold;box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
   .myhabitica-label p {margin-bottom:0;}
+  .tasks-column>.d-flex{flex-direction:column;justify-content:center;}
+  .tasks-column>.d-flex .badge{display:none;}
+  .tasks-column>.d-flex .filters{margin-left:0;}
+  [data-v-afe38474]{position:sticky;top:0;z-index:100;}
 `
 
 let style = {
@@ -100,53 +103,56 @@ const saveStyle = function() {
  * * * */
 const loadStyle = function() {
   chrome.storage.sync.get('style', function(item) {
-    var save = JSON.parse(item['style'])
-    style = save
-    if (save.t1 === ct1) {
-      tasksColumn1.checked = false
+    if (item) {
+      var save = JSON.parse(item['style'])
+      style = save
+      if (save.t1 === ct1) {
+        tasksColumn1.checked = false
+      }
+      if (save.t2 === ct2) {
+        tasksColumn2.checked = false
+      }
+      if (save.t3 === ct3) {
+        tasksColumn3.checked = false
+      }
+      if (save.t4 === ct4) {
+        tasksColumn4.checked = false
+      }
+      if (save.t5 === ct5) {
+        tasksFilter.checked = false
+      }
+      if (save.t6 === ct6) {
+        tasksLess.checked = false
+      }
+      if (save.t7 === ct7) {
+        tasksBackgroundTxt.checked = false
+      }
+      if (save.t8 === ct8) {
+        tasksSearch.checked = false
+      }
+      if (save.m1 === cm1) {
+        mist1.checked = false
+      }
+      if (save.m2 === cm2) {
+        mist2.checked = false
+      }
+      if (save.m3 === cm3) {
+        mist3.checked = false
+      }
+      if (save.m4 === cm4) {
+        mist4.checked = false
+      }
+      if (save.mh1 === cmh1) {
+        mh1.checked = false
+      }
+      saveStyle()
     }
-    if (save.t2 === ct2) {
-      tasksColumn2.checked = false
-    }
-    if (save.t3 === ct3) {
-      tasksColumn3.checked = false
-    }
-    if (save.t4 === ct4) {
-      tasksColumn4.checked = false
-    }
-    if (save.t5 === ct5) {
-      tasksFilter.checked = false
-    }
-    if (save.t6 === ct6) {
-      tasksLess.checked = false
-    }
-    if (save.t7 === ct7) {
-      tasksBackgroundTxt.checked = false
-    }
-    if (save.t8 === ct8) {
-      tasksSearch.checked = false
-    }
-    if (save.m1 === cm1) {
-      mist1.checked = false
-    }
-    if (save.m2 === cm2) {
-      mist2.checked = false
-    }
-    if (save.m3 === cm3) {
-      mist3.checked = false
-    }
-    if (save.m4 === cm4) {
-      mist4.checked = false
-    }
-    if (save.mh1 === cmh1) {
-      mh1.checked = false
-    }
-    saveStyle()
   })
 }
 
 window.onload = function() {
   loadStyle()
+  saveStyle()
 }
 
 /** * *
