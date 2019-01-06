@@ -62,7 +62,8 @@ const defaultStyle = `
   .tasks-column>.d-flex{flex-direction:column;justify-content:center;}
   .tasks-column>.d-flex .badge{display:none;}
   .tasks-column>.d-flex .filters{margin-left:0;}
-  [data-v-afe38474]{position:sticky;top:0;z-index:100;}
+  .navbar {position:fixed;top:0;width:100%;}
+  #app>.container-fluid{margin-top:56px;}
 `
 
 let style = {
