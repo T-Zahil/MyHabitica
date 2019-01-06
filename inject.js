@@ -1,11 +1,8 @@
 var style = document.createElement('style')
 
-console.log('inject')
-
 function loadStyle() {
   chrome.storage.sync.get('style', function(item) {
     var save = JSON.parse(item['style'])
-    console.log('Load style for data : ' + save)
     style.innerText =
       save.default+
       save.t1 +

@@ -5,16 +5,11 @@
 const taskBrowsing = function() {
   const tasks = document.getElementsByClassName('task')
   const hideText = '/hide'
-  const catText = '--'
 
   for (var i = 0; i < tasks.length; i++) {
     // HIDE TASK
     if (tasks[i].innerText.toLowerCase().indexOf(hideText) > -1) {
       tasks[i].className += ' hide'
-    }
-    // TASK CAT
-    if (tasks[i].innerText.indexOf(catText) > -1) {
-      tasks[i].className += ' taskCat'
     }
     // TASK TAGS
     var tags = tasks[i].getElementsByClassName('tags-container')
@@ -22,13 +17,11 @@ const taskBrowsing = function() {
 
     if (tags[0]) {
       if (tags[0].childElementCount > 1) {
-        console.log(tags[0].childElementCount)
         for (var j = 0; j < tags[0].childElementCount; j++) {
           if (j > 0 && j < 5) {
             var newTags = document.createElement('div')
             newTags.className = 'category-label myhabitica-label'
             newTags.innerHTML += tags[0].children[j].innerHTML
-            console.log(newTags)
             tagsArea[0].insertBefore(newTags, tagsArea[0].firstChild)
           }
         }

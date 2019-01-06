@@ -58,11 +58,8 @@ const defaultStyle = `
   .tasks-columns{justify-content:center;}
   .notifications{top:60px!important;}
   .reward-items[data-v-41b753a2]{justify-content:center!important;padding-top:15px!important;}
-  .taskCat .left-control{display:none!important;}
-  .taskCat .right-control{display:none!important;}
-  .taskCat .task-content{padding-bottom:0;background-color:#A997E8;}
-  .taskCat .task-title{font-weight:bold;color:white;font-size:1.2rem;}
-  .myhabitica-label{min-width: 30px;font-size: 11px;line-height: 1;font-weight: bold;box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+  .myhabitica-label{min-width: 30px;font-size: 11px;line-height: 1;font-weight: bold;box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+  .myhabitica-label p {margin-bottom:0;}
 `
 
 let style = {
@@ -87,8 +84,6 @@ let style = {
  * SAVE CUSTOM STYLE
  * * * */
 const saveStyle = function() {
-  console.log('Save style : ' + style)
-  console.log(style)
   chrome.storage.sync.set({
       style: JSON.stringify(style)
     },
@@ -106,8 +101,6 @@ const saveStyle = function() {
 const loadStyle = function() {
   chrome.storage.sync.get('style', function(item) {
     var save = JSON.parse(item['style'])
-    console.log('Load style for checkbox : ' + save)
-    console.log(save)
     style = save
     if (save.t1 === ct1) {
       tasksColumn1.checked = false
